@@ -2,8 +2,8 @@ let valores = [];
 
 const nombre = document.getElementById('nombre');
 const empCode = document.getElementById('empCode');
-const Salary = document.getElementById('Salary');
-const City = document.getElementById('city');
+const salary = document.getElementById('salary');
+const city = document.getElementById('city');
 const alertaNoExisteContsiner = document.getElementById('alertaNoExisteContainer');
 
 const btnAgregar = document.getElementById('btnAgregar');
@@ -15,7 +15,7 @@ class Usuario{
         this.id = id;
         this.nombre = nombre;
         this.empCode = empCode;
-        this.Salary = salary;
+        this.salary = salary;
         this.city = city;
 
     }
@@ -27,12 +27,12 @@ const editar = (id) => {
     idinput.value = id;
 
     const valoresLS = JSON.parse(localStorage.getItem('valores'));
-    const valorLS = valoresLs.find(valor => valor.id === id);
+    const valorLS = valoresLS.find(valor => valor.id === id);
 
     nombre.value = valorLS.nombre;
     empCode.value = valorLS.empCode;
-    Salary.value = valorLS.salary;
-    City.value = valorLS.city;
+    salary.value = valorLS.salary;
+    city.value = valorLS.city;
 
     btnAgregar.innerText = 'Actualizar';
     btnAgregar.classList.remove('btn-success');
@@ -49,7 +49,7 @@ const eliminar = () => {
     const id = document.getElementById('idEliminar').innerText;
     
 
-    const valoresLs = JSON.parse(localStorage.setItem('valores'));
+    const valoresLS = JSON.parse(localStorage.setItem('valores'));
     const valoresLSFiltrados = valoresLS.filter(valor => valor.id !== id);
     localStorage.setItem('valores',JSON.stringify(valoresLSFiltrados));
     obtenerValores();
@@ -59,8 +59,8 @@ const eliminar = () => {
 const cancelarEditar = () => {
     nombre.value ='';
     empCode.value ='';
-    Salary.value ='';
-    City.value ='';
+    salary.value ='';
+    city.value ='';
     idinput.value ='';
 
     nombre.focus();
@@ -75,7 +75,7 @@ const agregar = () => {
 
        if(!idinput.value){
 
-           const user = new Usuario(uuidv4(), nombre.value, empCode.value, Salary.value, City.value );
+           const user = new Usuario(uuidv4(), nombre.value, empCode.value, salary.value, city.value );
 
            valor = JSON.parse(localStorage.getItem('valores')) || [];
            valores.push(user);
@@ -205,8 +205,7 @@ const obtenerValores = () =>{
                             <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
                         </svg>
                     </button> 
-            
-            </td>
+             </td>
          </tr>`;
          tabla.innerHTML += templateRr;
 
